@@ -86,9 +86,9 @@ void SourceObjectWriter::start_block(ROMWriter::BlockType type, int preset_count
 #endif
 
 #if USE_SEGMENTED_TEXT_BLOCK_WRITER
-    _stream->print   ("const int _rom_text_block%d", _num_passes_completed);
+    _stream->print   ("const unsigned int _rom_text_block%d", _num_passes_completed);
 #else
-    _stream->print   ("const int _rom_text_block");
+    _stream->print   ("const unsigned int _rom_text_block");
 #endif
     break;
   case ROMWriter::DATA_BLOCK:
@@ -96,16 +96,16 @@ void SourceObjectWriter::start_block(ROMWriter::BlockType type, int preset_count
     start_block_comments("data");
     if (GenerateRelaunchableROM) {
       _stream->print_cr("const int _rom_is_relaunchable = 1;");
-      _stream->print   ("const int _rom_data_block_src");
+      _stream->print   ("const unsigned int _rom_data_block_src");
     } else {
       _stream->print_cr("const int _rom_is_relaunchable = 0;");
-      _stream->print_cr("const int _rom_data_block_src[] = { 0 };");
+      _stream->print_cr("const unsigned int _rom_data_block_src[] = { 0 };");
       _stream->print   ("      int _rom_data_block");
     }
     break;
   case ROMWriter::HEAP_BLOCK:
     start_block_comments("heap");
-    _stream->print("const int _rom_heap_block");
+    _stream->print("const unsigned int _rom_heap_block");
     break;
   case ROMWriter::PERSISTENT_HANDLES_BLOCK:
     start_block_comments("persistent_handles");
@@ -128,7 +128,7 @@ void SourceObjectWriter::start_block(ROMWriter::BlockType type, int preset_count
 #if ENABLE_PREINITED_TASK_MIRRORS && ENABLE_ISOLATES 
   case ROMWriter::TASK_MIRRORS_BLOCK:
     start_block_comments("task_mirrors");
-    _stream->print("const int _rom_task_mirrors");
+    _stream->print("const unsigned int _rom_task_mirrors");
     break;
 #endif  
   default:
@@ -212,7 +212,7 @@ void SourceObjectWriter::end_block(JVM_SINGLE_ARG_TRAPS) {
 void SourceObjectWriter::write_rom_tm_bitmap() {
   TypeArray::Raw bitmap = writer()->rom_tm_bitmap()->obj();
   int length = bitmap().length();
-  _stream->print_cr("const int _rom_task_mirrors_bitmap[%d] = {", length);
+  _stream->print_cr("const unsigned int _rom_task_mirrors_bitmap[%d] = {", length);
   for (int i = 0; i < length; i++) {
     writer()->write_plain_int(bitmap().int_at(i), _stream);
     if (i != length - 1) {

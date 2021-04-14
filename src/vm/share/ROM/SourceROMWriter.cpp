@@ -196,7 +196,7 @@ void SourceROMWriter::write_image(JVM_SINGLE_ARG_TRAPS) {
 }
 
 void SourceROMWriter::write_text_defines(FileStream* stream) {
-  stream->print_cr("#define TEXT(x)  (int)&_rom_text_block[x]");
+  stream->print_cr("#define TEXT(x)  (unsigned int)&_rom_text_block[x]");
   stream->print_cr("#define TEXTb(x) (int)&(((char*)_rom_text_block)[x])");
 }
 
@@ -221,9 +221,9 @@ void SourceROMWriter::init_declare_stream() {
 
   write_text_defines(&_declare_stream);
 
-  _declare_stream.print_cr("#define DATA(x)  (int)&_rom_data_block[x]");
+  _declare_stream.print_cr("#define DATA(x)  (unsigned int)&_rom_data_block[x]");
   _declare_stream.print_cr("#define DATAb(x) (int)&(((char*)_rom_data_block)[x])");
-  _declare_stream.print_cr("#define HEAP(x)  (int)&_rom_heap_block[x]");
+  _declare_stream.print_cr("#define HEAP(x)  (unsigned int)&_rom_heap_block[x]");
   _declare_stream.cr();
 }
 

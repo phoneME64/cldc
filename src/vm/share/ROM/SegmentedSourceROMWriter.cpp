@@ -70,7 +70,7 @@ void SegmentedSourceROMWriter::write_text_defines(FileStream* stream) {
 void SegmentedSourceROMWriter::write_forward_declarations(FileStream* stream) {
   stream->cr();
   for (int i = 0; i < ROM::TEXT_BLOCK_SEGMENTS_COUNT; i++) {
-    stream->print_cr("extern const int _rom_text_block%i[];", i);
+    stream->print_cr("extern const unsigned int _rom_text_block%i[];", i);
   }
   stream->cr();
 }

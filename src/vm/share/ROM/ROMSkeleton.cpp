@@ -90,18 +90,18 @@ extern "C" {
   const int              _rom_text_block8[]                 = {0};
   const int              _rom_text_block9[]                 = {0};
 #else
-  const int              _rom_text_block[]                  = {0};
+  const unsigned int     _rom_text_block[]                  = {0};
 #endif
         int              _rom_data_block[]                  = {0};
-  const int              _rom_data_block_src[]              = {0};
-  const int              _rom_heap_block[]                  = {0};
+  const unsigned int     _rom_data_block_src[]              = {0};
+  const unsigned int     _rom_heap_block[]                  = {0};
   const int              _rom_persistent_handles[]          = {0};
 #if ENABLE_HEAP_NEARS_IN_HEAP
   const int              _rom_rom_duplicated_handles[]      = {0};
 #endif
 #if ENABLE_PREINITED_TASK_MIRRORS && ENABLE_ISOLATES
-  const int              _rom_task_mirrors[]                = {0};
-  const int              _rom_task_mirrors_bitmap[]         = {0};          
+  const unsigned int     _rom_task_mirrors[]                = {0};
+  const unsigned int     _rom_task_mirrors_bitmap[]         = {0};          
 #endif 
   const unsigned short   _rom_strings_src[]                 = {0};
   const int              _rom_strings_count                 =  0;

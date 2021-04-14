@@ -116,18 +116,18 @@ extern const int              _rom_text_block7[];
 extern const int              _rom_text_block8[];
 extern const int              _rom_text_block9[];
 #else
-extern const int              _rom_text_block[];
+extern const unsigned int     _rom_text_block[];
 #endif
 extern       int              _rom_data_block[];
-extern const int              _rom_data_block_src[];
-extern const int              _rom_heap_block[];
+extern const unsigned int     _rom_data_block_src[];
+extern const unsigned int     _rom_heap_block[];
 extern const int              _rom_persistent_handles[];
 #if ENABLE_HEAP_NEARS_IN_HEAP
 extern const int              _rom_rom_duplicated_handles[];
 #endif
 #if ENABLE_PREINITED_TASK_MIRRORS && ENABLE_ISOLATES
-extern const int              _rom_task_mirrors[];
-extern const int              _rom_task_mirrors_bitmap[];          
+extern const unsigned int     _rom_task_mirrors[];
+extern const unsigned int     _rom_task_mirrors_bitmap[];          
 #endif 
 extern const unsigned short   _rom_strings_src[];
 extern const int              _rom_strings_count;
